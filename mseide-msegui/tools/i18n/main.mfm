@@ -1,0 +1,614 @@
+object mainfo: tmainfo
+  visible = False
+  bounds_x = 107
+  bounds_y = 283
+  bounds_cx = 624
+  bounds_cy = 390
+  container.frame.levelo = 1
+  container.frame.localprops = [frl_levelo]
+  container.frame.sbhorz.facebutton.template = concavex
+  container.frame.sbhorz.facebutton.dummy = 0
+  container.frame.sbhorz.faceendbutton.template = concavex
+  container.frame.sbhorz.faceendbutton.dummy = 0
+  container.frame.sbvert.facebutton.template = concavey
+  container.frame.sbvert.facebutton.dummy = 0
+  container.frame.sbvert.faceendbutton.template = concavey
+  container.frame.sbvert.faceendbutton.dummy = 0
+  container.bounds = (
+    0
+    20
+    624
+    370
+  )
+  optionswindow = [wo_groupleader]
+  mainmenu = mainmenu1
+  options = [fo_main, fo_terminateonclose, fo_savepos, fo_savezorder, fo_savestate]
+  statfile = projectfo.projectstat
+  caption = 'MSEi18n'
+  icon.transparentcolor = -2147483642
+  icon.options = [bmo_masked]
+  oncreate = tmainfooncreate
+  onloaded = loadedexe
+  oneventloopstart = tmainfoonloaded
+  ondestroy = tmainfoondestroy
+  onclosequery = mainclosequery
+  moduleclassname = 'tmseform'
+  object tgroupbox1: tgroupbox
+    frame.captiondist = -4
+    frame.localprops1 = [frl1_captiondist]
+    frame.dummy = 0
+    face.template = concavex
+    face.dummy = 0
+    bounds_x = 1
+    bounds_y = 1
+    bounds_cx = 622
+    bounds_cy = 24
+    anchors = [an_top]
+  end
+  object grid: twidgetgrid
+    frame.sbvert.facebutton.template = concavey
+    frame.sbvert.facebutton.dummy = 0
+    frame.sbvert.faceendbutton.template = concavey
+    frame.sbvert.faceendbutton.dummy = 0
+    frame.sbhorz.facebutton.template = concavex
+    frame.sbhorz.facebutton.dummy = 0
+    frame.sbhorz.faceendbutton.template = concavex
+    frame.sbhorz.faceendbutton.dummy = 0
+    taborder = 5
+    bounds_x = 1
+    bounds_y = 25
+    bounds_cx = 622
+    bounds_cy = 344
+    anchors = [an_left, an_top, an_right, an_bottom]
+    optionsgrid = [og_colsizing, og_focuscellonenter, og_rowheight, og_colchangeontabkey, og_wrapcol, og_autopopup]
+    fixcols.count = 1
+    fixcols.items = <    
+      item
+        width = 39
+        numstart = 1
+        numstep = 1
+      end>
+    fixrows.count = 1
+    fixrows.items = <    
+      item
+        face.template = convexx
+        face.dummy = 0
+        height = 16
+        captions.count = 5
+        captions.items = <        
+          item
+            caption = 'Name'
+          end        
+          item
+            caption = 'Type'
+          end        
+          item
+            caption = 'NT'
+          end        
+          item
+            caption = 'Comment'
+          end        
+          item
+            caption = 'Value'
+          end>
+      end>
+    datacols.count = 5
+    datacols.options = [co_proportional, co_savestate]
+    datacols.options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+    datacols.items = <    
+      item[tree]
+        width = 195
+        options = [co_readonly, co_proportional, co_savestate]
+        options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+        widgetname = 'tree'
+        dataclass = ttreeitemeditlist
+      end    
+      item[typedisp]
+        options = [co_readonly, co_savestate]
+        options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+        widgetname = 'typedisp'
+        dataclass = tgridenumdatalist
+      end    
+      item[donottranslate]
+        width = 19
+        options = [co_drawfocus, co_savestate]
+        options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+        widgetname = 'donottranslate'
+        dataclass = tgridintegerdatalist
+      end    
+      item[comment]
+        width = 124
+        options = [co_proportional, co_savestate]
+        options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+        widgetname = 'comment'
+        dataclass = tgridmsestringdatalist
+      end    
+      item[value]
+        width = 102
+        options = [co_readonly, co_proportional, co_savestate]
+        options1 = [co1_rowfont, co1_rowcolor, co1_zebracolor, co1_rowcoloractive, co1_rowcolorfocused, co1_rowreadonly, co1_autorowheight]
+        widgetname = 'value'
+        dataclass = tgridmsestringdatalist
+      end>
+    datarowheight = 16
+    statfile = projectfo.projectstat
+    reffontheight = 14
+    object tree: ttreeitemedit
+      optionswidget1 = [ow1_fontglyphheight]
+      color = -1879048185
+      frame.levelo = 0
+      frame.colorclient = -2147483646
+      frame.localprops = [frl_levelo, frl_colorclient]
+      taborder = 1
+      visible = False
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 195
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate]
+      optionsedit = [oe_readonly, oe_undoonesc, oe_checkmrcancel, oe_exitoncursor, oe_hintclippedtext]
+      textflags = [tf_ycentered, tf_clipo, tf_noselect, tf_ellipseleft]
+      onupdaterowvalues = treeonupdaterowvalues
+      options = [teo_treecolnavig]
+      reffontheight = 14
+    end
+    object typedisp: tenumtypeedit
+      optionswidget1 = [ow1_fontglyphheight]
+      color = -1879048185
+      frame.levelo = 0
+      frame.colorclient = -2147483646
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.button.options = [fbo_invisible, fbo_disabled]
+      taborder = 2
+      visible = False
+      bounds_x = 196
+      bounds_y = 0
+      bounds_cx = 50
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate]
+      optionsedit = [oe_readonly, oe_undoonesc, oe_checkmrcancel, oe_exitoncursor]
+      dropdown.options = [deo_selectonly, deo_autodropdown, deo_disabled]
+      dropdown.cols.count = 1
+      dropdown.cols.items = <      
+        item
+        end>
+      oninit = typedisponinit
+      reffontheight = 14
+    end
+    object donottranslate: tbooleanedit
+      color = -2147483646
+      frame.levelo = 0
+      frame.localprops = [frl_levelo]
+      frame.dummy = 0
+      taborder = 3
+      bounds_x = 247
+      bounds_y = 0
+      bounds_cx = 19
+      bounds_cy = 16
+      optionsedit = [oe_undoonesc, oe_closequery, oe_checkmrcancel, oe_eatreturn, oe_resetselectonexit, oe_exitoncursor, oe_endonenter, oe_autoselect, oe_autoselectonfirstclick]
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate]
+      visible = False
+      onsetvalue = donottranslateonsetvalue
+    end
+    object comment: tmemodialogedit
+      frame.levelo = 0
+      frame.colorclient = -2147483646
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.button.width = 13
+      frame.button.color = -2147483646
+      frame.button.imagenr = 17
+      taborder = 4
+      visible = False
+      bounds_x = 267
+      bounds_y = 0
+      bounds_cx = 124
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate]
+      optionsedit = [oe_undoonesc, oe_closequery, oe_checkmrcancel, oe_eatreturn, oe_resetselectonexit, oe_exitoncursor, oe_endonenter, oe_autoselect, oe_autoselectonfirstclick, oe_hintclippedtext]
+      font.height = 12
+      font.name = 'stf_default'
+      font.xscale = 1
+      font.dummy = 0
+      onsetvalue = commentonsetvalue
+      reffontheight = 14
+    end
+    object value: tmemodialogedit
+      optionswidget1 = [ow1_fontglyphheight]
+      color = -1879048185
+      frame.levelo = 0
+      frame.colorclient = -2147483646
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.button.imagenr = 17
+      frame.button.options = [fbo_invisible, fbo_disabled]
+      taborder = 5
+      visible = False
+      bounds_x = 392
+      bounds_y = 0
+      bounds_cx = 102
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate]
+      optionsedit = [oe_readonly, oe_undoonesc, oe_checkmrcancel, oe_exitoncursor, oe_hintclippedtext]
+      reffontheight = 14
+    end
+  end
+  object flat: tbooleanedit
+    color = -2147483645
+    frame.caption = 'flat'
+    frame.dummy = 0
+    frame.outerframe = (
+      0
+      1
+      19
+      2
+    )
+    taborder = 1
+    bounds_x = 9
+    bounds_y = 5
+    bounds_cx = 32
+    bounds_cy = 16
+    statfile = projectfo.projectstat
+    optionsedit = [oe_undoonesc, oe_closequery, oe_checkmrcancel, oe_eatreturn, oe_resetselectonexit, oe_exitoncursor, oe_endonenter, oe_autoselect, oe_autoselectonfirstclick]
+    ondataentered = formatchanged
+  end
+  object stringonly: tbooleanedit
+    color = -2147483645
+    frame.caption = 'string only'
+    frame.dummy = 0
+    frame.outerframe = (
+      0
+      1
+      59
+      2
+    )
+    taborder = 2
+    bounds_x = 57
+    bounds_y = 5
+    bounds_cx = 72
+    bounds_cy = 16
+    statfile = projectfo.projectstat
+    ondataentered = formatchanged
+  end
+  object nont: tbooleanedit
+    color = -2147483645
+    frame.caption = 'no NT'
+    frame.dummy = 0
+    frame.outerframe = (
+      0
+      1
+      36
+      2
+    )
+    taborder = 3
+    bounds_x = 153
+    bounds_y = 5
+    bounds_cx = 49
+    bounds_cy = 16
+    statfile = projectfo.projectstat
+    ondataentered = formatchanged
+    onsetvalue = nontonsetvalue
+  end
+  object ntonly: tbooleanedit
+    color = -2147483645
+    frame.caption = 'NT only'
+    frame.dummy = 0
+    frame.outerframe = (
+      0
+      1
+      44
+      2
+    )
+    taborder = 4
+    bounds_x = 233
+    bounds_y = 5
+    bounds_cx = 57
+    bounds_cy = 16
+    statfile = projectfo.projectstat
+    ondataentered = formatchanged
+    onsetvalue = ntonlyonsetvalue
+  end
+  object coloron: tbooleanedit
+    color = -2147483645
+    frame.caption = 'Show Color'
+    frame.dummy = 0
+    frame.outerframe = (
+      0
+      1
+      67
+      2
+    )
+    taborder = 6
+    bounds_x = 321
+    bounds_y = 5
+    bounds_cx = 80
+    bounds_cy = 16
+    statfile = projectfo.projectstat
+    ondataentered = showcolordataentered
+    value = True
+  end
+  object mainstatfile: tstatfile
+    filename = 'msei18n.sta'
+    filedir = '"^/.mseide"'
+    options = [sfo_createpath, sfo_transaction, sfo_activatorread, sfo_activatorwrite]
+    onstatupdate = mainupdatestat
+    left = 16
+    top = 96
+  end
+  object mainmenu1: tmainmenu
+    onupdate = mainmenuupdate
+    facetemplate = convexx
+    itemframetemplate = menuitemframe
+    itemframetemplateactive = menuitemframe
+    menu.submenu.count = 10
+    menu.submenu.items = <    
+      item
+        caption = '&Open'
+        name = 'open'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = onprojectopen
+      end    
+      item
+        caption = '&Save'
+        name = 'save'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = onprojectsave
+      end    
+      item
+        caption = 'Save &as'
+        name = 'saveas'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = saveasexecute
+      end    
+      item
+        caption = '&New'
+        name = 'new'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = newprojectexe
+      end    
+      item
+        caption = '&Edit'
+        name = 'edit'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = onprojectedit
+      end    
+      item
+        caption = '&Import'
+        name = 'import'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = importonexecute
+      end    
+      item
+        caption = 'Ex&port'
+        name = 'export'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = exportonexecute
+      end    
+      item
+        caption = '&Make'
+        name = 'make'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = makeonexecute
+      end    
+      item
+        submenu.count = 2
+        submenu.items = <        
+          item
+            caption = '&About'
+            state = [as_localcaption, as_localonexecute]
+            onexecute = aboutexe
+          end        
+          item
+            caption = '&Configure MSEi18n'
+            state = [as_localcaption, as_localonexecute]
+            onexecute = configureonexecute
+          end>
+        caption = 'Se&ttings'
+        name = 'settings'
+        state = [as_localcaption]
+      end    
+      item
+        caption = 'E&xit'
+        state = [as_localcaption, as_localonexecute]
+        onexecute = exitexe
+      end>
+    left = 256
+    top = 160
+  end
+  object projectfiledialog: tfiledialog
+    statfile = mainstatfile
+    controller.filterlist.data = (
+      (
+        'Translate project'
+        '*.trp'
+      )
+    )
+    controller.defaultext = 'trp'
+    controller.options = [fdo_checkexist, fdo_chdir]
+    controller.captionopen = 'Open translate project'
+    controller.captionsave = 'Save translate project'
+    left = 120
+    top = 156
+  end
+  object threadcomp: tthreadcomp
+    onexecute = makeexecute
+    onterminate = maketerminate
+    left = 209
+    top = 115
+  end
+  object convexx: tfacecomp
+    template.fade_pos.count = 2
+    template.fade_pos.items = (
+      0
+      1
+    )
+    template.fade_color.count = 2
+    template.fade_color.items = (
+      -1610612732
+      -1610612731
+    )
+    template.fade_direction = gd_up
+    left = 385
+    top = 103
+  end
+  object convexy: tfacecomp
+    template.fade_pos.count = 2
+    template.fade_pos.items = (
+      0
+      1
+    )
+    template.fade_color.count = 2
+    template.fade_color.items = (
+      -1610612732
+      -1610612731
+    )
+    template.fade_direction = gd_left
+    left = 481
+    top = 103
+  end
+  object concavex: tfacecomp
+    template.fade_pos.count = 2
+    template.fade_pos.items = (
+      0
+      1
+    )
+    template.fade_color.count = 2
+    template.fade_color.items = (
+      -1610612732
+      -1610612731
+    )
+    template.fade_direction = gd_down
+    left = 385
+    top = 135
+  end
+  object concavey: tfacecomp
+    template.fade_pos.count = 2
+    template.fade_pos.items = (
+      0
+      1
+    )
+    template.fade_color.count = 2
+    template.fade_color.items = (
+      -1610612732
+      -1610612731
+    )
+    left = 481
+    top = 135
+  end
+  object sysenv: tsysenvmanager
+    left = 24
+    top = 160
+  end
+  object c: tstringcontainer
+    strings.data = (
+      'name'
+      'type'
+      'notranslate'
+      'comment'
+      'value'
+      '<no project>'
+      'Can not read module'
+      'New translate project'
+      'Exec error'
+      'Making'
+      'overwrites itself'
+      'ERROR'
+      'Finished OK'
+      'Configure MSEi18n'
+      'Data has changed'
+      'Do you wish to save'
+      'CONFIRMATION'
+      'Close error:'
+      ''
+    )
+    left = 64
+    top = 200
+  end
+  object tskincontroller1: tskincontroller
+    extenders = 0
+    left = 176
+    top = 224
+  end
+  object iconbmp: tbitmapcomp
+    bitmap.origformat = 'png'
+    bitmap.image = {
+      00000000000000001800000018000000AC080000000000000000000000000000
+      0000000000000000000000000000000000000000EBEBEB01EAEAEA01E9E9E901
+      E8E8E801E7E7E701E6E6E601E4E4E401E3E3E301DDE0DD01E0D3CC01E3CBC001
+      E4C7B901E2C5B701E0C8BD01DECEC901DADADA01D9D9D901D8D8D801D6D6D601
+      D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101EBEBEB01EAEAEA01E9E9E901
+      E8E8E801E7E7E701E6E6E601E5DBD701E7C6B60179A65A0164A75201CEA56601
+      E4A56A01E3A46901E3A67001C3A66F015FA14B01BCB49201DAD0CC01D6D6D601
+      D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101EBEBEB01EAEAEA01E9E9E901
+      BED5BD01B6D1B401E9CCBE01E8B59201E6A76C017EA95401F7FBF70167A03A01
+      D69B1801D99B1801A099230180B46701C1E0BF01A89B4E01E0AD8A01DCBFB101
+      D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101EBEBEB01EAEAEA01E9E9E901
+      84BC81019ECC980170A45001BC9C4001DB9C210173A12F01FEFFFE01D6EAD301
+      769E1F01B49D000189BD7401FFFFFF01A2CB9101BB981B01DE9C4701E0A47301
+      DDB7A301D4D4D401D3D3D301D2D2D201D1D1D101EBEBEB01EAEAEA01E9E9E901
+      B9B88C01B5D5AC01FAFDFA0198C484016DA130017D9A0E01B4D6A801FFFFFF01
+      9ECA8D01669E2001EBF5EA01FFFFFF017BB45D01CE9F0001D59B0501DD9A3701
+      DFA26C01BDAE8C0165AB61019ABD9801D1D1D101EBEBEB01EAEAEA01ECCFC101
+      EAAE7D0175A84E01FFFFFF02FEFFFE018CC0760152A13401FBFDFB01EFF7EF01
+      50A03201FFFFFF0269A83C016AA537017C9E1E01C49A0001769C380191C08301
+      BDDDBA0197BC9601D1D1D101EBEBEB01EBE1DD01EBB89501E4A24D01A19A1101
+      A2CA8C01FFFFFF0369AB430180BA6701E2F0E101519F240174B250018BC17901
+      599E220168AF54015E9E26017DB45F01EDF6ED01EFF7EF0168A34F01D2CAC401
+      D1D1D101EBEBEB01ECCBBB01E9AA6F01DC9D2201989C0D01609B1E01B7D7AB01
+      FFFFFF025FA93D016CC447015EAB350177C02F0120F8DF0151DC88016DA41301
+      68AC4601DFEEDC01FFFFFF01FDFEFD016DA84A01CF9E5E01D9B8A801D1D1D101
+      EBEBEB01ECBC9E01E4A24D01D39C000168AA4A01BFDBB401539F2C0193C58001
+      9BCB8B0141CF79010EFFF9014FE6900152E48B010EFFF90129F4CF0169AC4001
+      FFFFFF0387BB6F01B09A0701DD9B4601DCAC8E01D1D1D101EDDDD801EBB28701
+      DF9D3301D19F00017CA11E016AA83C01579E1F0165A3120162A6160161DF7201
+      15FCED0165D54F015CA901016AD148017ED4440170BB3001A5CF9701FFFFFF01
+      A3CE960188A01501CF9F0001D4982E01DEA57A01D5C5C001EDD5CA01C6A66501
+      7D9C2D0174A83F0186BB6C01A8D09B01C2E0C001DAECD90171B65F0188BF0801
+      8DD31C0132980001068000013E9D000131F2BF0113FDF2016ABC400156A22C01
+      60A537017CB1530183B8650180B5640171A14C01ACB48F01EED1C30148973201
+      D6EAD501FFFFFF0569B0440127F6CF011DFADE0154B60B011D8E00016AB70001
+      3EEDA60114FDF00166B52B018AC27C01FFFFFF02F9FCF901B5D6AA016DA95601
+      B2B18F01EED1C301D8A766017D9A240171AB4A01CEE5C801FFFFFF02A4CF9701
+      70B01D0115FCEB010EFFF9016DE145014FEB7D014EE9860185C615015BB23C01
+      6DAD370155A22D0173AC3F0174AD4701729F2501A8961501DD9F6401D8BBAD01
+      EDD5CA01EAAD7701DC9D2201CBA00001869F0F016CA8390157A3350157A63601
+      3C9A250183C5160161C1350167C631010EFFF90256BA4701F7FBF701FFFFFF01
+      D4E9D10162A63801A8A30501CFA00001D99A1F01DEA16B01D7BFB401EDDDD801
+      EBB28701DF9D3301D19F0001CAA500018CA4100180BA6601F5FAF50153A53701
+      88C27501D2E8D10169B24C016CDA52016DCA390158A83101FCFEFC01FFFFFF02
+      FCFEFC018DBF7701859E1C01DB992F01DEA57A01D5C5C001EBEBEB01ECBC9E01
+      E4A24D01D49C00019D9E0B018DC07501FFFFFF019AC9880164AC4701FFFFFF02
+      C5E1C1016AAB07016DB45D015CAA3E0159A53901EDF6EC01FFFFFF03BAD9AF01
+      8B9C3F01DCAC8E01D1D1D101EBEBEB01ECCBBB01E9AA6F01B49B22017FB56201
+      FFFFFF01FAFDFA0159A23301CFE6CB01FFFFFF0284BE6A016DA5020197C98601
+      FBFDFB0175B55B01539F2A0179B35A0195C48001B9DAB301D7EBD60197C78F01
+      97AB7701D1D1D101EBEBEB01EBE1DD01DCB48C0172AC5801FAFDFA01D3E9D201
+      76B460015DA23601FFFFFF02C1DEB80153A12B0154A22E0172B15201FFFFFF02
+      6DAC4801C8A60001BB9E0001A69505019799390187A15B01BDC2B001D1D1D101
+      EBEBEB01EAEAEA01BABF970166A24A01799D390192980D018F980501ABD19F01
+      FFFFFF01A0CB8F016CA11C018CBF75017DB65E016BA42701F6FBF601FFFFFF01
+      85BA6B01C6A00001D49C0001DC993601DFA37201DABDAF01D2D2D201D1D1D101
+      EBEBEB01EAEAEA01E9E9E901ECC6B201E8AB7501E19E3B01749D2901E1F0DF01
+      6BA842019FA0090184A01401E0EFDF018DBF7601999F03019EC98D01FFFFFF01
+      A9D09C01B2970401DD9A3701DFA26C01DCB6A201D3D3D301D2D2D201D1D1D101
+      EBEBEB01EAEAEA01E9E9E901E8E8E801EBC5B101E9AD7C019A9F4201729B2E01
+      CD9B0001D19F0001A29B0601A4CE9B016B9F2701CFA000016DA23101FCFEFC01
+      C4E1C201A7963601E0A47301DDB7A301D4D4D401D3D3D301D2D2D201D1D1D101
+      EBEBEB01EAEAEA01E9E9E901E8E8E801E7E7E701E9CCBE01E8B59201E6A76C01
+      E2A04B01DE9C3201D89C20017D982101CA991601DA9B2001B9982C019AC68B01
+      B1D4AA01B6A56F01DCBFB101D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101
+      EBEBEB01EAEAEA01E9E9E901E8E8E801E7E7E701E6E6E601E5DBD701E7C6B601
+      E7B79901E6AD8201E5A87201E4A56A01E3A46901E3A67001E3AA7F0178A55A01
+      66A95B01CBCBBE01D6D6D601D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101
+      EBEBEB01EAEAEA01E9E9E901E8E8E801E7E7E701E6E6E601E4E4E401E3E3E301
+      E2E2E201E4D4CF01E3CBC001E4C7B901E2C5B701E0C8BD01DECEC901CDD5CD01
+      CCD4CC01D8D8D801D6D6D601D5D5D501D4D4D401D3D3D301D2D2D201D1D1D101
+    }
+    left = 296
+    top = 224
+  end
+  object menuitemframe: tframecomp
+    template.levelo = -1
+    template.leveli = 1
+    left = 256
+    top = 192
+  end
+end

@@ -1,0 +1,64 @@
+object realenterfo: trealenterfo
+  visible = False
+  bounds_x = 395
+  bounds_y = 323
+  bounds_cx = 233
+  bounds_cy = 88
+  bounds_cymin = 75
+  container.bounds = (
+    0
+    0
+    233
+    88
+  )
+  options = [fo_screencentered, fo_closeonesc, fo_localshortcuts, fo_autoreadstat, fo_autowritestat]
+  moduleclassname = 'tmseform'
+  object lab: tlabel
+    optionswidget1 = [ow1_autoheight]
+    taborder = 3
+    bounds_x = 8
+    bounds_y = 41
+    bounds_cx = 217
+    bounds_cy = 14
+    anchors = [an_left, an_top, an_right, an_bottom]
+    caption = 'lab'
+    textflags = [tf_ycentered, tf_wordbreak]
+  end
+  object value: trealedit
+    frame.dummy = 0
+    bounds_x = 8
+    bounds_y = 62
+    anchors = [an_left, an_right, an_bottom]
+    optionsedit1 = [oe1_autopopupmenu, oe1_savevalue, oe1_savestate]
+    optionsedit = [oe_undoonesc, oe_closequery, oe_checkmrcancel, oe_shiftreturn, oe_resetselectonexit, oe_exitoncursor, oe_endonenter, oe_autoselect, oe_autoselectonfirstclick]
+    value = -Inf
+    valuedefault = -Inf
+    valuerange = 0
+    valuestart = 0
+    min = -Inf
+    max = 1E+038
+    reffontheight = 14
+  end
+  object ok: tbutton
+    taborder = 1
+    bounds_x = 120
+    bounds_y = 62
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_right, an_bottom]
+    state = [as_default, as_localdefault, as_localcaption]
+    caption = '&OK'
+    modalresult = mr_ok
+  end
+  object cancel: tbutton
+    taborder = 2
+    bounds_x = 176
+    bounds_y = 62
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_right, an_bottom]
+    state = [as_localcaption]
+    caption = '&Cancel'
+    modalresult = mr_cancel
+  end
+end

@@ -1,0 +1,44 @@
+object faceselectorfo: tfaceselectorfo
+  visible = False
+  bounds_x = 126
+  bounds_y = 231
+  bounds_cx = 320
+  bounds_cy = 244
+  container.frame.localprops = []
+  container.frame.localprops1 = []
+  container.bounds = (
+    0
+    0
+    320
+    244
+  )
+  options = [fo_screencentered, fo_closeonesc, fo_autoreadstat, fo_autowritestat, fo_savepos, fo_savezorder, fo_savestate]
+  statfile = tstatfile1
+  caption = 'Face Selector'
+  moduleclassname = 'tmseform'
+  object lv: tlistview
+    frame.localprops = []
+    frame.localprops1 = []
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 320
+    bounds_cy = 244
+    anchors = []
+    optionsgrid = [og_colsizing, og_rowsizing, og_focuscellonenter, og_savestate, og_colchangeontabkey, og_wraprow, og_wrapcol, og_autopopup, og_mousescrollcol]
+    options = [lvo_readonly, lvo_horz, lvo_drawfocus, lvo_leftbuttonfocusonly, lvo_focusselect, lvo_mouseselect, lvo_savestate]
+    itemlist.onpaintitem = paintitemexe
+    itemlist.captionpos = cp_bottom
+    itemlist.imagewidth = 16
+    itemlist.imageheight = 16
+    statfile = tstatfile1
+    onlayoutchanged = layoutcha
+    onitemevent = itemev
+    reffontheight = 14
+  end
+  object tstatfile1: tstatfile
+    filename = 'faceselector.sta'
+    options = [sfo_memory, sfo_activatorread, sfo_activatorwrite]
+    left = 72
+    top = 48
+  end
+end

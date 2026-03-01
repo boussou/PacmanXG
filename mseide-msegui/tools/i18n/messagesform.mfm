@@ -1,0 +1,51 @@
+object messagesfo: tmessagesfo
+  optionswidget = [ow_arrowfocus, ow_subfocus, ow_destroywidgets, ow_hinton]
+  visible = False
+  bounds_x = 298
+  bounds_y = 263
+  bounds_cx = 421
+  bounds_cy = 234
+  container.optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_subfocus, ow_mousetransparent, ow_destroywidgets]
+  container.bounds = (
+    0
+    0
+    421
+    234
+  )
+  options = [fo_closeonesc, fo_closeonenter, fo_autoreadstat, fo_autowritestat, fo_savepos, fo_savestate]
+  caption = 'Make Language Units'
+  onclosequery = formclosquery
+  moduleclassname = 'tmseform'
+  object twidgetgrid1: twidgetgrid
+    optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_focusbackonesc, ow_destroywidgets]
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 421
+    bounds_cy = 234
+    anchors = []
+    datacols.count = 1
+    datacols.options = [co_fill, co_savestate]
+    datacols.items = <    
+      item[messages]
+        width = 1024
+        options = [co_fill, co_savestate]
+        widthmin = 1024
+        widgetname = 'messages'
+        dataclass = tgridrichstringdatalist
+      end>
+    datarowlinewidth = 0
+    datarowheight = 16
+    reffontheight = 14
+    object messages: tterminal
+      taborder = 1
+      visible = False
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 1024
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate, oe1_checkvalueafterstatread]
+      options = [teo_readonly]
+      reffontheight = 14
+    end
+  end
+end

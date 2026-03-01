@@ -1,0 +1,285 @@
+inherited cpuarmm3fo: tcpuarmm3fo
+  bounds_x = 57
+  bounds_y = 234
+  bounds_cx = 272
+  bounds_cy = 266
+  container.bounds = (
+    0
+    0
+    262
+    266
+  )
+  caption = 'CPU ARM M3'
+  moduleclassname = 'tcpuarmfo'
+  inherited on: tbooleanedit
+  end
+  inherited stoptime: tdatetimedisp
+  end
+  inherited tspacer1: tspacer
+    bounds_cx = 251
+    inherited tlayouter1: tlayouter
+      inherited r1: tintegeredit
+      end
+      inherited r0: tintegeredit
+      end
+      inherited r4: tintegeredit
+      end
+      inherited r3: tintegeredit
+      end
+      inherited r2: tintegeredit
+      end
+      inherited r5: tintegeredit
+      end
+      inherited r6: tintegeredit
+      end
+      inherited r7: tintegeredit
+      end
+      inherited r8: tintegeredit
+      end
+    end
+    inherited tbooleanedit16: tbooleanedit
+      frame.caption = 'ISR_NUMBER'
+      frame.captionpos = cp_topright
+      frame.outerframe = (
+        63
+        19
+        0
+        0
+      )
+      bounds_x = 177
+      bounds_y = 6
+      bounds_cx = 74
+      bounds_cy = 30
+    end
+    inherited tbooleanedit17: tbooleanedit
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 229
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit18: tbooleanedit
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 218
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit19: tbooleanedit
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 207
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit20: tbooleanedit
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 195
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit15: tbooleanedit
+      Tag = 13
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 104
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit14: tbooleanedit
+      Tag = 10
+      frame.caption = 'ICI/IT'
+      frame.captionpos = cp_topright
+      frame.outerframe = (
+        22
+        19
+        0
+        0
+      )
+      bounds_x = 115
+      bounds_cx = 33
+    end
+    inherited tbooleanedit13: tbooleanedit
+      Tag = 12
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 115
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit12: tbooleanedit
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 184
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit11: tbooleanedit
+      Tag = 11
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 126
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit10: tbooleanedit
+      Tag = 26
+      frame.captionpos = cp_topleft
+      bounds_x = 60
+    end
+    inherited tbooleanedit9: tbooleanedit
+      Tag = 25
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 71
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit8: tbooleanedit
+      Tag = 15
+      frame.caption = ''
+      frame.outerframe = (
+        0
+        0
+        0
+        0
+      )
+      bounds_x = 82
+      bounds_y = 25
+      bounds_cy = 11
+    end
+    inherited tbooleanedit7: tbooleanedit
+      Tag = 14
+      bounds_x = 93
+    end
+    inherited tbooleanedit6: tbooleanedit
+      frame.caption = 'T'
+      bounds_x = 77
+      bounds_y = 0
+      visible = False
+    end
+    inherited tbooleanedit5: tbooleanedit
+      bounds_x = 46
+    end
+    inherited tbooleanedit4: tbooleanedit
+      bounds_x = 35
+    end
+    inherited tbooleanedit3: tbooleanedit
+      bounds_x = 24
+    end
+    inherited tbooleanedit2: tbooleanedit
+      bounds_x = 13
+    end
+    inherited c: tbooleanedit
+      bounds_x = 2
+    end
+    inherited tlayouter2: tlayouter
+      inherited r11: tintegeredit
+      end
+      inherited r10: tintegeredit
+      end
+      inherited r9: tintegeredit
+      end
+      inherited fps: tintegeredit
+      end
+      inherited cpsr: tintegeredit
+      end
+      inherited r12: tintegeredit
+      end
+      inherited sp: tintegeredit
+      end
+      inherited lr: tintegeredit
+      end
+      inherited pc: tintegeredit
+      end
+    end
+    object tbooleanedit21: tbooleanedit[22]
+      Tag = 6
+      color = -2147483645
+      frame.levelo = -1
+      frame.colorclient = -1879048185
+      frame.captionpos = cp_top
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.localprops1 = []
+      taborder = 22
+      bounds_x = 173
+      bounds_y = 25
+      bounds_cx = 11
+      bounds_cy = 11
+    end
+    object tbooleanedit22: tbooleanedit[23]
+      Tag = 7
+      color = -2147483645
+      frame.levelo = -1
+      frame.colorclient = -1879048185
+      frame.captionpos = cp_top
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.localprops1 = []
+      taborder = 23
+      bounds_x = 162
+      bounds_y = 25
+      bounds_cx = 11
+      bounds_cy = 11
+    end
+    object tbooleanedit23: tbooleanedit[24]
+      Tag = 8
+      color = -2147483645
+      frame.levelo = -1
+      frame.colorclient = -1879048185
+      frame.captionpos = cp_top
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.localprops1 = []
+      taborder = 24
+      bounds_x = 151
+      bounds_y = 25
+      bounds_cx = 11
+      bounds_cy = 11
+    end
+  end
+end

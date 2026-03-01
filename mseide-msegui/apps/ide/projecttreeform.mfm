@@ -1,0 +1,407 @@
+object projecttreefo: tprojecttreefo
+  optionswidget = [ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_subfocus, ow_destroywidgets, ow_hinton]
+  frame.localprops = []
+  frame.localprops1 = []
+  frame.grip_size = 10
+  frame.grip_options = [go_closebutton, go_fixsizebutton, go_topbutton, go_backgroundbutton, go_nolockbutton, go_buttonhints]
+  visible = False
+  bounds_x = 263
+  bounds_y = 431
+  bounds_cx = 286
+  bounds_cy = 201
+  container.optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_subfocus, ow_mousetransparent, ow_destroywidgets]
+  container.frame.localprops = []
+  container.frame.localprops1 = []
+  container.bounds = (
+    0
+    0
+    276
+    201
+  )
+  dragdock.splitter_size = 0
+  dragdock.optionsdock = [od_savepos, od_savezorder, od_canmove, od_canfloat, od_candock, od_propsize, od_captionhint, od_childicons]
+  options = [fo_savepos, fo_savezorder, fo_savestate]
+  statfile = mainfo.projectstatfile
+  caption = 'Project Tree'
+  oncreate = projecttreefooncreate
+  oneventloopstart = projecttreefoonloaded
+  ondestroy = projecttreefoondestroy
+  onstatupdate = projecttreeonupdatestat
+  moduleclassname = 'tdockform'
+  object grid: twidgetgrid
+    optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_focusbackonesc, ow_mousewheel, ow_destroywidgets]
+    frame.localprops = []
+    frame.localprops1 = []
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 276
+    bounds_cy = 201
+    anchors = []
+    optionsgrid = [og_colsizing, og_focuscellonenter, og_savestate, og_colchangeontabkey, og_wrapcol, og_autopopup]
+    datacols.count = 2
+    datacols.options = [co_savestate, co_mousescrollrow]
+    datacols.items = <    
+      item[projectedit]
+        linecolorfix = -1610612733
+        width = 141
+        options = [co_readonly, co_savestate, co_mousescrollrow]
+        oncellevent = projecteditoncellevent
+        widgetname = 'projectedit'
+        dataclass = ttreeitemeditlist
+        datalist.imnr_expanded = 1
+        datalist.imagelist = nodeicons
+        datalist.imagewidth = 16
+        datalist.imageheight = 16
+        datalist.onstatreaditem = projecteditonstatreaditem
+        datalist.ondragbegin = editdragbegin
+        datalist.ondragover = editdragover
+        datalist.ondragdrop = editdragrop
+      end    
+      item[edit]
+        linecolorfix = -1610612733
+        width = 129
+        options = [co_fill, co_savestate, co_mousescrollrow]
+        onshowhint = colshowhintexe
+        widgetname = 'edit'
+        dataclass = titemeditlist
+      end>
+    datarowheight = 17
+    statfile = mainfo.projectstatfile
+    oncellevent = gridcellevent
+    reffontheight = 16
+    object projectedit: ttreeitemedit
+      optionswidget1 = [ow1_autoheight]
+      optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_destroywidgets]
+      color = -1879048185
+      frame.levelo = 0
+      frame.colorclient = -2147483646
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.localprops1 = []
+      taborder = 1
+      onpopup = projecteditonpopup
+      visible = False
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 141
+      bounds_cy = 18
+      optionsedit1 = []
+      optionsedit = [oe_readonly, oe_undoonesc, oe_checkmrcancel, oe_exitoncursor, oe_hintclippedtext, oe_locate]
+      onchange = projecteditonchange
+      onsetvalue = captionset
+      onupdaterowvalues = projecteditonupdaterowvalues
+      fieldedit = edit
+      options = [teo_treecolnavig, teo_keyrowmoving]
+      oncheckrowmove = itemoncheckrowmove
+    end
+    object edit: trecordfieldedit
+      optionswidget1 = [ow1_fontglyphheight]
+      optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_destroywidgets]
+      color = -1879048185
+      frame.levelo = 0
+      frame.colorclient = -2147483645
+      frame.localprops = [frl_levelo, frl_colorclient]
+      frame.localprops1 = []
+      frame.button.color = -2147483646
+      frame.button.options = [fbo_invisible]
+      frame.buttons.count = 2
+      frame.buttons.items = <      
+        item
+          color = -2147483646
+          options = [fbo_invisible]
+        end      
+        item
+          color = -2147483646
+          imagenr = 17
+          onexecute = receditdialogexe
+        end>
+      taborder = 2
+      onshowhint = edithintexe
+      visible = False
+      bounds_x = 142
+      bounds_y = 0
+      bounds_cx = 129
+      bounds_cy = 17
+      optionsedit1 = []
+      optionsedit = [oe_undoonesc, oe_closequery, oe_checkmrcancel, oe_shiftreturn, oe_eatreturn, oe_resetselectonexit, oe_exitoncursor, oe_endonenter, oe_autoselect, oe_autoselectonfirstclick, oe_hintclippedtext]
+      textflags = [tf_ycentered, tf_clipo, tf_noselect, tf_ellipseleft]
+      oncellevent = editoncellevent
+      dropdown.cols.count = 1
+      dropdown.cols.items = <      
+        item
+        end>
+      reffontheight = 16
+    end
+  end
+  object unitpopup: tpopupmenu
+    menu.action = addunitfileact
+    menu.submenu.count = 6
+    menu.submenu.items = <    
+      item
+        action = addunitfileact
+      end    
+      item
+        action = removeunitfileact
+      end    
+      item
+        options = [mao_separator, mao_shortcutcaption]
+      end    
+      item
+        action = adddiract
+      end    
+      item
+        action = removediract
+      end    
+      item
+        action = editdiract
+      end>
+    left = 8
+    top = 8
+  end
+  object addunitfileact: taction
+    caption = '&Add Unit'
+    onexecute = addunitfileonexecute
+    left = 112
+    top = 8
+  end
+  object filedialog: tfiledialog
+    controller.options = [fdo_checkexist, fdo_savelastdir]
+    controller.historymaxcount = 0
+    left = 8
+    top = 168
+  end
+  object removeunitfileact: taction
+    caption = '&Remove Unit'
+    onexecute = removeunitfileonexecute
+    onupdate = remfileupdateexe
+    left = 112
+    top = 24
+  end
+  object filepopup: tpopupmenu
+    menu.submenu.count = 6
+    menu.submenu.items = <    
+      item
+        action = addfileact
+      end    
+      item
+        action = removefileact
+      end    
+      item
+        options = [mao_separator, mao_shortcutcaption]
+      end    
+      item
+        action = adddiract
+      end    
+      item
+        action = removediract
+      end    
+      item
+        action = editdiract
+      end>
+    menu.state = [as_localhint]
+    left = 8
+    top = 40
+  end
+  object addfileact: taction
+    caption = 'Add Text File'
+    onexecute = addfileexe
+    left = 112
+    top = 48
+  end
+  object removefileact: taction
+    caption = 'Remove Text File'
+    onexecute = removefileonexecute
+    onupdate = remfileupdateexe
+    left = 112
+    top = 64
+  end
+  object cmodulepopup: tpopupmenu
+    menu.submenu.count = 6
+    menu.submenu.items = <    
+      item
+        action = addcmoduleact
+      end    
+      item
+        action = removecmoduleact
+      end    
+      item
+        options = [mao_separator, mao_shortcutcaption]
+      end    
+      item
+        action = adddiract
+      end    
+      item
+        action = removediract
+      end    
+      item
+        action = editdiract
+      end>
+    menu.state = [as_localhint]
+    left = 8
+    top = 72
+  end
+  object removecmoduleact: taction
+    caption = 'Remove C-File'
+    onexecute = removecmoduleonexecute
+    onupdate = remfileupdateexe
+    left = 112
+    top = 104
+  end
+  object addcmoduleact: taction
+    caption = 'Add C-File'
+    onexecute = addcmoduleonexecute
+    left = 112
+    top = 88
+  end
+  object cmoduledialog: tfiledialog
+    controller.filterlist.data = (
+      (
+        'C-Source (*.c)'
+        '"*.c"'
+      )
+    )
+    controller.options = [fdo_checkexist, fdo_savelastdir]
+    controller.historymaxcount = 0
+    left = 96
+    top = 168
+  end
+  object adddiract: taction
+    caption = 'Add Directory'
+    onexecute = adddirexe
+    onupdate = updateadddirexe
+    top = 104
+  end
+  object removediract: taction
+    caption = 'Remove Directory'
+    onexecute = remdirexe
+    onupdate = updateremdirexe
+    top = 120
+  end
+  object nodeicons: timagelist
+    count = 8
+    left = 144
+    top = 120
+    image = {
+      00000000020000003000000030000000380A0000000000000000000000000000
+      0000000000000000000000000000000000000000FF00FF6300000006FF00FF0A
+      00000006FF00FF0900000006FF00FF0B00000001FFFFFF0400000002FF00FF09
+      00000001FFFFFF0400000002FF00FF0800000001FFFFFF0400000002FF00FF0A
+      00000001FFFFFF0400000001FFFFFF0100000001FF00FF0800000001FFFFFF04
+      00000001FFFFFF0100000001FF00FF0700000001FFFFFF0400000001FFFFFF01
+      00000001FF00FF0900000001FFFFFF0400000001FFFFFF0200000001FF00FF07
+      00000001FFFFFF0400000001FFFFFF0200000001FF00FF0600000001FFFFFF02
+      FF8E7801E0321005AEAEAE01E032100100000001FF00FF0500000001FFFFFF04
+      00000005FF00FF0600000001FFFFFF0400000005FF00FF0500000001FFFFFF02
+      F2F2F201E0E0E00780808001FF00FF0500000001FFFFFF080000000180808001
+      FF00FF0500000001FFFFFF080000000180808001FF00FF0400000001FFFFFF02
+      F2F2F201E0E0E00780808001FF00FF0500000001FFFFFF080000000180808001
+      FF00FF0500000001FFFFFF080000000180808001FF00FF0400000001FFFFFF02
+      F2F2F201E0E0E00780808001FF00FF0500000001FFFFFF080000000180808001
+      FF00FF0500000001FFFFFF080000000180808001FF00FF0400000001FFFFFF02
+      F2F2F201E0E0E001F2F2F205E0E0E00180808001FF00FF0500000001FFFFFF08
+      0000000180808001FF00FF0500000001FFFFFF080000000180808001FF00FF04
+      00000001FFFFFF02F2F2F201E0E0E001F2F2F201E0E0E00380808001E0E0E001
+      80808001FF00FF0500000001FFFFFF080000000180808001FF00FF0500000001
+      FFFFFF080000000180808001FF00FF0400000001FFFFFF02F2F2F201E0E0E001
+      F2F2F201E0E0E00380808001E0E0E00180808001FF00FF0500000001FFFFFF08
+      0000000180808001FF00FF0500000001FFFFFF080000000180808001FF00FF04
+      00000001FFFFFF02F2F2F201E0E0E001F2F2F20180808004E0E0E00180808001
+      FF00FF050000000A80808001FF00FF050000000A80808001FF00FF0400000003
+      F2F2F201E0E0E00780808001FF00FF068080800AFF00FF068080800AFF00FF05
+      80808002F2F2F20180808008FF00FF9400000006FF00FF2A00000001FFFFFF04
+      00000002FF00FF0AFF8E7801E0321006AEAEAE01E032100100000001FF00FF06
+      FF8E7801E0321006AEAEAE01E032100100000001FF00FF0500000001FFFFFF04
+      00000001FFFFFF0100000001FF00FF09F2F2F201E0E0E00880808001FF00FF06
+      F2F2F201E0E0E00880808001FF00FF0500000001FFFFFF02FF8E7801E0321005
+      AEAEAE01E032100100000001FF00FF05F2F2F201E0E0E00880808001FF00FF06
+      F2F2F201E0E0E00880808001FF00FF0500000001FFFFFF02F2F2F201E0E0E007
+      80808001FF00FF05F2F2F201E0E0E00880808001FF00FF06F2F2F201E0E0E008
+      80808001FF00FF0500000001FFFFFF02F2F2F201E0E0E00780808001FF00FF05
+      F2F2F201E0E0E001F2F2F206E0E0E00180808001FF00FF06F2F2F201E0E0E001
+      F2F2F206E0E0E00180808001FF00FF0500000001FFFFFF02F2F2F201E0E0E007
+      80808001FF00FF05F2F2F201E0E0E001F2F2F201E0E0E00480808001E0E0E001
+      80808001FF00FF06F2F2F201E0E0E001F2F2F201E0E0E00480808001E0E0E001
+      80808001FF00FF0500000001FFFFFF02F2F2F201E0E0E001F2F2F205E0E0E001
+      80808001FF00FF05F2F2F201E0E0E001F2F2F201E0E0E00480808001E0E0E001
+      80808001FF00FF06F2F2F201E0E0E001F2F2F201E0E0E00480808001E0E0E001
+      80808001FF00FF0500000001FFFFFF02F2F2F201E0E0E001F2F2F201E0E0E003
+      80808001E0E0E00180808001FF00FF05F2F2F201E0E0E001F2F2F20180808005
+      E0E0E00180808001FF00FF06F2F2F201E0E0E001F2F2F20180808005E0E0E001
+      80808001FF00FF0500000001FFFFFF02F2F2F201E0E0E001F2F2F201E0E0E003
+      80808001E0E0E00180808001FF00FF05F2F2F201E0E0E00880808001FF00FF06
+      F2F2F201E0E0E00880808001FF00FF0500000001FFFFFF02F2F2F201E0E0E001
+      F2F2F20180808004E0E0E00180808001FF00FF05F2F2F20180808009FF00FF06
+      F2F2F20180808009FF00FF0500000003F2F2F201E0E0E00780808001FF00FF25
+      80808002F2F2F20180808008FF00FFD400000006FF00FF0B7F7F7F0100000004
+      7F7F7F01FF00FF097F7F7F01000000047F7F7F01FF00FF0A00000001FFFFFF04
+      00000002FF00FF0A00000001FFFFFF0100FFFF01FFFFFF0100FFFF0100000001
+      FF00FF090000000100FFFF01FFFFFF0100FFFF01FFFFFF0100000001FF00FF0A
+      00000001FFFFFF0400000001FFFFFF0100000001FF00FF080000000AFF00FF05
+      0000000100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100000003
+      FF00FF0700000001FFFFFF0400000001FFFFFF0200000001FF00FF0700000001
+      FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01
+      FFFFFF0100000001FF00FF0400000001FFFFFF0100FFFF01FFFFFF0100FFFF01
+      FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100000001FF00FF0600000001
+      FFFFFF0400000005FF00FF060000000100FFFF01FFFFFF0100FFFF01FFFFFF01
+      00FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF0100000001FF00FF0400000001
+      00FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF01
+      00FFFF0100000001FF00FF0600000001FFFFFF02FF8E7801E0321005AEAEAE01
+      E032100100000001FF00FF0400000001FFFFFF0100FFFF01FFFFFF0100FFFF01
+      FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100000001FF00FF0400000001
+      FFFFFF0100FFFF01FFFFFF010000000AFF00FF0300000001FFFFFF02EBEBEB01
+      E0E0E00780808001FF00FF040000000100FFFF01FFFFFF0100FFFF01FFFFFF01
+      00FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF0100000001FF00FF0400000001
+      00FFFF01FFFFFF010000000100FFFF01BFBFBF0100FFFF01BFBFBF0100FFFF01
+      BFBFBF0100FFFF01BFBFBF0100FFFF0100000001FF00FF0300000001FFFFFF02
+      EBEBEB01E0E0E001EBEBEB0480808001E0E0E00180808001FF00FF0400000001
+      FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF01
+      FFFFFF0100000001FF00FF0400000001FFFFFF010000000100FFFF01BFBFBF01
+      00FFFF01BFBFBF0100FFFF01BFBFBF0100FFFF01BFBFBF0100FFFF0100000001
+      FF00FF0400000001FFFFFF02EBEBEB01E0E0E001EBEBEB01E0E0E00380808001
+      E0E0E00180808001FF00FF040000000100FFFF01FFFFFF0100FFFF01FFFFFF01
+      00FFFF01FFFFFF0100FFFF01FFFFFF0100FFFF0100000001FF00FF0400000002
+      00FFFF01BFBFBF0100FFFF01BFBFBF0100FFFF01BFBFBF0100FFFF01BFBFBF01
+      00FFFF0100000001FF00FF0500000001FFFFFF02EBEBEB01E0E0E001EBEBEB01
+      E0E0E00380808001E0E0E00180808001FF00FF050000000AFF00FF050000000A
+      FF00FF0600000001FFFFFF02EBEBEB01E0E0E001EBEBEB0180808004E0E0E001
+      80808001FF00FF2400000003EBEBEB01E0E0E00780808001FF00FF2580808002
+      EBEBEB0180808008FF00FF3200000000000000000000000000000000F801F801
+      FC000000F803F803FC010000F807F807FC030000F80FF80FFC3F0000F81FF81F
+      FC3F0000F83FF83FFC3F0000F83FF83FFC3F0000F83FF83FFC3F0000F83FF83F
+      FC3F0000F83FF83FFC3F0000F83FF83FFC3F0000F83FF83FFC3F0000F03FF03F
+      F83F0000000000000000000000000000000000000000000000000000FC000000
+      00000000FC01F81FF81F0000FC03F81FF81F0000FC3FF81FF81F0000FC3FF81F
+      F81F0000FC3FF81FF81F0000FC3FF81FF81F0000FC3FF81FF81F0000FC3FF81F
+      F81F0000FC3FF81FF81F0000FC3FF81FF81F0000FC3F000000000000F83F0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      FC000000F801FC00FC010000F801FC00FC030000FC0FFE07FC070000FC1FFE0F
+      FC0F0000FC1FFE0FFC3F0000FC1FFE7FFC3F0000FC1FFE7FFC3F0000FC1FFE3F
+      FC3F0000FC1FFE1FFC3F0000F81FFC0FFC3F000000000000FC3F000000000000
+      F83F00000000000000000000
+    }
+  end
+  object dummyimage: timagelist
+    width = 0
+    height = 0
+    left = 144
+    top = 144
+  end
+  object editdiract: taction
+    caption = 'Edit Directory Caption'
+    onexecute = editdirexe
+    onupdate = udateeditdirexe
+    top = 136
+  end
+  object c: tstringcontainer
+    strings.data = (
+      'Pascal Units'
+      'C Modules'
+      'Text Files'
+      'Do you wish to remove "'
+      'Select Directory'
+      'Do you want to remove'
+      'with the sub-items from project?'
+    )
+    left = 208
+    top = 168
+  end
+end

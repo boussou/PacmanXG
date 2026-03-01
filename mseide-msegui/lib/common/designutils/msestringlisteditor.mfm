@@ -1,0 +1,112 @@
+object stringlisteditor: tstringlisteditor
+  optionswidget = [ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_subfocus, ow_destroywidgets, ow_hinton]
+  visible = False
+  bounds_x = 177
+  bounds_y = 203
+  bounds_cx = 275
+  bounds_cy = 237
+  container.optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_subfocus, ow_mousetransparent, ow_destroywidgets]
+  container.bounds = (
+    0
+    0
+    275
+    237
+  )
+  options = [fo_closeonesc, fo_autoreadstat, fo_autowritestat, fo_savepos]
+  statfile = tstatfile1
+  caption = 'Stringlisteditor'
+  moduleclassname = 'tmseform'
+  object ok: tbutton
+    optionswidget1 = [ow1_fontglyphheight, ow1_autoscale]
+    taborder = 3
+    bounds_x = 160
+    bounds_y = 210
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_left, an_bottom]
+    state = [as_default, as_localdefault, as_localcaption]
+    caption = '&OK'
+    modalresult = mr_ok
+    reffontheight = 14
+  end
+  object cancel: tbutton
+    optionswidget1 = [ow1_fontglyphheight, ow1_autoscale]
+    bounds_x = 216
+    bounds_y = 210
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_left, an_bottom]
+    state = [as_localcaption]
+    caption = '&Cancel'
+    modalresult = mr_cancel
+    reffontheight = 14
+  end
+  object grid: twidgetgrid
+    optionswidget1 = [ow1_fontlineheight]
+    optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusout, ow_focusbackonesc, ow_mousewheel, ow_destroywidgets]
+    taborder = 1
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 275
+    bounds_cy = 198
+    anchors = [an_top, an_bottom]
+    optionsgrid = [og_rowmoving, og_keyrowmoving, og_rowinserting, og_rowdeleting, og_focuscellonenter, og_autofirstrow, og_wrapcol, og_autopopup]
+    fixcols.count = 1
+    fixcols.items = <    
+      item
+        width = 24
+        numstep = 1
+      end>
+    zebra_start = 1
+    zebra_height = 1
+    datacols.count = 1
+    datacols.items = <    
+      item[valueedit]
+        width = 245
+        options = [co_fill, co_savestate, co_mousescrollrow]
+        widgetname = 'valueedit'
+        dataclass = tgridrichstringdatalist
+      end>
+    datarowheight = 16
+    onrowcountchanged = gridonrowcountchanged
+    reffontheight = 14
+    object valueedit: ttextedit
+      optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_destroywidgets]
+      optionsskin = [osk_framebuttononly]
+      taborder = 1
+      visible = False
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 245
+      bounds_cy = 16
+      optionsedit1 = [oe1_keyexecute, oe1_savestate]
+      optionsedit = [oe_closequery, oe_checkmrcancel, oe_linebreak, oe_shiftreturn, oe_eatreturn, oe_exitoncursor]
+      reffontheight = 14
+    end
+  end
+  object rowcount: tintegeredit
+    optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_arrowfocusin, ow_arrowfocusout, ow_destroywidgets]
+    frame.caption = 'Rowcount'
+    frame.captionpos = cp_left
+    frame.dummy = 0
+    frame.outerframe = (
+      64
+      0
+      0
+      0
+    )
+    taborder = 2
+    bounds_x = 16
+    bounds_y = 210
+    bounds_cx = 116
+    anchors = [an_left, an_bottom]
+    onsetvalue = rowcountonsetvalue
+    reffontheight = 14
+  end
+  object tstatfile1: tstatfile
+    filename = 'stringlisteditor.sta'
+    options = [sfo_memory]
+    left = 40
+    top = 88
+  end
+end

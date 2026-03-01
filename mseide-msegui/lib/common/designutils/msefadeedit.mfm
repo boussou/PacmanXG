@@ -1,0 +1,653 @@
+object fadeeditfo: tfadeeditfo
+  optionswidget = [ow_arrowfocus, ow_subfocus, ow_destroywidgets, ow_hinton]
+  visible = False
+  bounds_x = 150
+  bounds_y = 221
+  bounds_cx = 519
+  bounds_cy = 443
+  container.optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_subfocus, ow_mousetransparent, ow_destroywidgets]
+  container.frame.localprops = []
+  container.frame.localprops1 = []
+  container.bounds = (
+    0
+    0
+    519
+    443
+  )
+  options = [fo_closeonesc, fo_autoreadstat, fo_autowritestat, fo_savepos, fo_savestate]
+  statfile = formstatfile
+  caption = 'Fade Edit'
+  windowopacity = -Inf
+  oncreate = createev
+  moduleclassname = 'tmseform'
+  object cont2: tsimplewidget
+    visible = True
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 519
+    bounds_cy = 402
+    anchors = [an_top, an_bottom]
+    object cont1: tsimplewidget
+      visible = True
+      bounds_x = 0
+      bounds_y = 73
+      bounds_cx = 519
+      bounds_cy = 330
+      anchors = [an_top, an_bottom]
+      object tsimplewidget7: tsimplewidget
+        optionswidget = [ow_mousetransparent, ow_destroywidgets]
+        color = -1610612731
+        face.fade_direction = gd_down
+        face.localprops = [fal_fadirection]
+        taborder = 5
+        visible = True
+        bounds_x = 444
+        bounds_y = 56
+        bounds_cx = 66
+        bounds_cy = 273
+        anchors = [an_top, an_right, an_bottom]
+      end
+      object gridlayout: tlayouter
+        bounds_x = 8
+        bounds_y = 56
+        bounds_cx = 431
+        bounds_cy = 274
+        bounds_cymin = 90
+        anchors = [an_left, an_top, an_right, an_bottom]
+        object opagrid: twidgetgrid
+          Tag = 1
+          frame.caption = 'Opacity'
+          frame.localprops = []
+          frame.localprops1 = []
+          frame.outerframe = (
+            0
+            17
+            0
+            0
+          )
+          bounds_x = 0
+          bounds_y = 147
+          bounds_cx = 433
+          bounds_cy = 126
+          anchors = [an_left, an_right, an_bottom]
+          optionsgrid = [og_colsizing, og_rowinserting, og_rowdeleting, og_focuscellonenter, og_autoappend, og_sorted, og_colchangeontabkey, og_wrapcol, og_autopopup, og_mousescrollcol]
+          fixcols.count = 1
+          fixcols.items = <          
+            item
+              width = 22
+              numstep = 1
+            end>
+          datacols.count = 3
+          datacols.options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_savestate, co_cancopy, co_canpaste, co_mousescrollrow]
+          datacols.items = <          
+            item
+              colorselect = -2147483642
+              width = 24
+              onbeforedrawcell = beforedrawev
+              options = [co_nofocus, co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_savestate, co_mousescrollrow]
+            end          
+            item[opaposed]
+              width = 89
+              options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_proportional, co_savevalue, co_savestate, co_cancopy, co_canpaste, co_mousescrollrow]
+              name = 'opapos'
+              widgetname = 'opaposed'
+              dataclass = tgridrealdatalist
+            end          
+            item[opacolored]
+              width = 290
+              options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_fill, co_savevalue, co_savestate, co_nosort, co_cancopy, co_canpaste, co_mousescrollrow]
+              widthmin = 63
+              name = 'opacolor'
+              widgetname = 'opacolored'
+              dataclass = tgridenumdatalist
+            end>
+          datarowheight = 16
+          statfile = fadestatfile
+          onrowsinserted = rowinsertev
+          onrowsdeleted = rowdeleteev
+          oncellevent = gridcellev
+          reffontheight = 14
+          object opaposed: trealedit
+            optionswidget1 = [ow1_fontglyphheight]
+            optionsskin = [osk_framebuttononly]
+            frame.levelo = 0
+            frame.colorclient = -2147483645
+            frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+            frame.localprops1 = []
+            taborder = 1
+            visible = False
+            bounds_x = 25
+            bounds_y = 0
+            bounds_cx = 89
+            bounds_cy = 16
+            optionsedit1 = [oe1_savevalue]
+            ondataentered = dataenteterev
+            value = -Inf
+            valuedefault = -Inf
+            formatedit = '0.000'
+            formatdisp = '0.000'
+            valuerange = 1
+            valuestart = 0
+            valuemin = 0
+            valuemax = 1
+            reffontheight = 14
+          end
+          object opacolored: tcoloredit
+            optionsskin = [osk_framebuttononly]
+            frame.levelo = 0
+            frame.colorclient = -2147483645
+            frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+            frame.localprops1 = []
+            frame.button.color = -1879048187
+            frame.buttons.count = 2
+            frame.buttons.items = <            
+              item
+                color = -1879048187
+              end            
+              item
+                color = -1879048187
+                imagenr = 17
+              end>
+            frame.buttonellipse.color = -1879048187
+            frame.buttonellipse.imagenr = 17
+            taborder = 2
+            visible = False
+            bounds_x = 115
+            bounds_y = 0
+            bounds_cx = 290
+            bounds_cy = 16
+            optionsedit1 = [oe1_savevalue, oe1_thumbtrack]
+            ondataentered = dataenteterev
+            valuedefault = -1610612731
+            reffontheight = 14
+          end
+        end
+        object grid: twidgetgrid
+          frame.localprops = []
+          frame.localprops1 = []
+          taborder = 1
+          bounds_x = 0
+          bounds_y = 0
+          bounds_cx = 433
+          bounds_cy = 144
+          anchors = [an_left, an_top, an_right, an_bottom]
+          optionsgrid = [og_colsizing, og_rowinserting, og_rowdeleting, og_focuscellonenter, og_autoappend, og_sorted, og_colchangeontabkey, og_wrapcol, og_autopopup, og_mousescrollcol]
+          fixcols.count = 1
+          fixcols.items = <          
+            item
+              width = 22
+              numstep = 1
+            end>
+          fixrows.count = 1
+          fixrows.items = <          
+            item
+              height = 16
+              captions.count = 4
+              captions.items = <              
+                item
+                end              
+                item
+                  caption = 'Pos'
+                end              
+                item
+                  caption = 'Color'
+                end              
+                item
+                  caption = 'Opacity'
+                end>
+            end>
+          datacols.count = 4
+          datacols.options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_savestate, co_cancopy, co_canpaste, co_mousescrollrow]
+          datacols.items = <          
+            item
+              colorselect = -2147483642
+              width = 24
+              onbeforedrawcell = beforedrawev
+              options = [co_nofocus, co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_savestate, co_mousescrollrow]
+            end          
+            item[posed]
+              width = 89
+              options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_proportional, co_savevalue, co_savestate, co_cancopy, co_canpaste, co_mousescrollrow]
+              widgetname = 'posed'
+              dataclass = tgridrealdatalist
+            end          
+            item[colored]
+              width = 151
+              options = [co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_fill, co_savevalue, co_savestate, co_nosort, co_cancopy, co_canpaste, co_mousescrollrow]
+              widthmin = 63
+              widgetname = 'colored'
+              dataclass = tgridenumdatalist
+            end          
+            item[opaed]
+              width = 138
+              options = [co_invisible, co_focusselect, co_mouseselect, co_keyselect, co_multiselect, co_rowselect, co_proportional, co_savevalue, co_savestate, co_nosort, co_cancopy, co_canpaste, co_mousescrollrow]
+              widgetname = 'opaed'
+              dataclass = tgridenumdatalist
+            end>
+          datarowheight = 16
+          statfile = fadestatfile
+          onrowsinserted = rowinsertev
+          onrowsdeleted = rowdeleteev
+          oncellevent = gridcellev
+          reffontheight = 14
+          object posed: trealedit
+            optionswidget1 = [ow1_fontglyphheight]
+            optionsskin = [osk_framebuttononly]
+            frame.levelo = 0
+            frame.colorclient = -2147483645
+            frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+            frame.localprops1 = []
+            taborder = 1
+            visible = False
+            bounds_x = 25
+            bounds_y = 0
+            bounds_cx = 89
+            bounds_cy = 16
+            optionsedit1 = [oe1_savevalue]
+            ondataentered = dataenteterev
+            value = -Inf
+            valuedefault = -Inf
+            formatedit = '0.000'
+            formatdisp = '0.000'
+            valuerange = 1
+            valuestart = 0
+            valuemin = 0
+            valuemax = 1
+            reffontheight = 14
+          end
+          object colored: tcoloredit
+            optionsskin = [osk_framebuttononly]
+            frame.levelo = 0
+            frame.colorclient = -2147483645
+            frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+            frame.localprops1 = []
+            frame.button.color = -1879048187
+            frame.buttons.count = 2
+            frame.buttons.items = <            
+              item
+                color = -1879048187
+              end            
+              item
+                color = -1879048187
+                imagenr = 17
+              end>
+            frame.buttonellipse.color = -1879048187
+            frame.buttonellipse.imagenr = 17
+            taborder = 2
+            visible = False
+            bounds_x = 115
+            bounds_y = 0
+            bounds_cx = 151
+            bounds_cy = 16
+            optionsedit1 = [oe1_savevalue, oe1_thumbtrack]
+            ondataentered = dataenteterev
+            valuedefault = -1610612731
+            reffontheight = 14
+          end
+          object opaed: tcoloredit
+            optionswidget1 = [ow1_fontglyphheight]
+            optionsskin = [osk_framebuttononly]
+            frame.levelo = 0
+            frame.colorclient = -2147483645
+            frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+            frame.localprops1 = []
+            frame.button.color = -1879048187
+            frame.buttons.count = 2
+            frame.buttons.items = <            
+              item
+                color = -1879048187
+              end            
+              item
+                color = -1879048187
+                imagenr = 17
+              end>
+            frame.buttonellipse.color = -1879048187
+            frame.buttonellipse.imagenr = 17
+            taborder = 3
+            visible = False
+            bounds_x = 267
+            bounds_y = 0
+            bounds_cx = 138
+            bounds_cy = 16
+            optionsedit1 = [oe1_savevalue, oe1_thumbtrack]
+            ondataentered = dataenteterev
+            valuedefault = -1610612730
+            reffontheight = 14
+          end
+        end
+        object splitter: tsplitter
+          color = -1879048189
+          taborder = 2
+          bounds_x = 0
+          bounds_y = 144
+          bounds_cx = 431
+          bounds_cy = 3
+          anchors = [an_top]
+          options = [spo_vmove, spo_vprop, spo_dockleft, spo_docktop, spo_dockright, spo_dockbottom]
+          linktop = grid
+          linkbottom = opagrid
+          statfile = formstatfile
+        end
+      end
+      object posedit: tpickwidget
+        optionswidget = [ow_destroywidgets]
+        frame.leveli = -1
+        frame.framei_bottom = 2
+        frame.localprops = [frl_leveli, frl_fibottom]
+        frame.localprops1 = []
+        taborder = 2
+        onpaint = pospaintev
+        bounds_x = 8
+        bounds_y = 0
+        bounds_cx = 504
+        bounds_cy = 50
+        anchors = [an_left, an_top, an_right]
+        onclientmouseevent = mouseev
+        onresize = resizeev
+        ongetcursorshape = getcursorshapeev
+        ongetpickobjects = getpickobjectev
+        onendpickmove = endpickev
+        onpaintxorpic = paintxorev
+        object tsimplewidget3: tsimplewidget
+          optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_mousetransparent, ow_destroywidgets]
+          color = -1610612731
+          face.localprops = []
+          taborder = 3
+          visible = True
+          bounds_x = 1
+          bounds_y = 1
+          bounds_cx = 502
+          bounds_cy = 40
+          anchors = [an_top]
+        end
+        object tsimplewidget2: tsimplewidget
+          optionswidget = [ow_mousetransparent, ow_destroywidgets]
+          color = -1610612730
+          taborder = 1
+          visible = True
+          bounds_x = 1
+          bounds_y = 0
+          bounds_cx = 502
+          bounds_cy = 13
+          anchors = [an_top]
+        end
+        object tsimplewidget4: tsimplewidget
+          optionswidget = [ow_mousetransparent, ow_destroywidgets]
+          color = -1610612734
+          taborder = 2
+          visible = True
+          bounds_x = 1
+          bounds_y = 27
+          bounds_cx = 502
+          bounds_cy = 13
+          anchors = [an_top]
+        end
+        object fadedisp: tsimplewidget
+          optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_mousetransparent, ow_destroywidgets]
+          color = -2147483645
+          face.localprops = []
+          visible = True
+          bounds_x = 1
+          bounds_y = 0
+          bounds_cx = 502
+          bounds_cy = 40
+          anchors = [an_top]
+        end
+      end
+      object tsimplewidget5: tsimplewidget
+        optionswidget = [ow_mousetransparent, ow_destroywidgets]
+        color = -1610612734
+        taborder = 3
+        visible = True
+        bounds_x = 445
+        bounds_y = 56
+        bounds_cx = 23
+        bounds_cy = 273
+        anchors = [an_top, an_right, an_bottom]
+      end
+      object tsimplewidget6: tsimplewidget
+        optionswidget = [ow_mousetransparent, ow_destroywidgets]
+        color = -1610612730
+        taborder = 4
+        visible = True
+        bounds_x = 489
+        bounds_y = 56
+        bounds_cx = 22
+        bounds_cy = 273
+        anchors = [an_top, an_right, an_bottom]
+      end
+      object fadevert: tsimplewidget
+        optionswidget = [ow_mousetransparent, ow_destroywidgets]
+        color = -2147483645
+        frame.leveli = -1
+        frame.localprops = [frl_leveli]
+        frame.localprops1 = []
+        face.fade_direction = gd_down
+        face.localprops = [fal_fadirection]
+        taborder = 1
+        visible = True
+        bounds_x = 444
+        bounds_y = 56
+        bounds_cx = 68
+        bounds_cy = 274
+        anchors = [an_top, an_right, an_bottom]
+      end
+    end
+    object opaedit: tpickwidget
+      Tag = 1
+      optionswidget = [ow_destroywidgets]
+      frame.options = [cfo_fixtop]
+      frame.leveli = -1
+      frame.framei_bottom = 2
+      frame.caption = 'Opacity'
+      frame.localprops = [frl_leveli, frl_fibottom]
+      frame.localprops1 = []
+      frame.outerframe = (
+        0
+        17
+        0
+        0
+      )
+      taborder = 1
+      onpaint = pospaintev
+      bounds_x = 8
+      bounds_y = 0
+      bounds_cx = 504
+      bounds_cy = 67
+      bounds_cxmin = 461
+      anchors = [an_left, an_top, an_right]
+      onclientmouseevent = mouseev
+      onresize = resizeev
+      ongetcursorshape = getcursorshapeev
+      ongetpickobjects = getpickobjectev
+      onendpickmove = endpickev
+      onpaintxorpic = paintxorev
+      object opadisp: tsimplewidget
+        optionswidget = [ow_mousefocus, ow_tabfocus, ow_arrowfocus, ow_mousetransparent, ow_destroywidgets]
+        color = -2147483645
+        face.localprops = []
+        visible = True
+        bounds_x = 1
+        bounds_y = 17
+        bounds_cx = 502
+        bounds_cy = 40
+        anchors = [an_top]
+      end
+    end
+  end
+  object bottomlayout: tlayouter
+    taborder = 1
+    bounds_x = 8
+    bounds_y = 407
+    bounds_cx = 504
+    bounds_cy = 31
+    anchors = [an_left, an_right, an_bottom]
+    optionsscale = [osc_expandy, osc_shrinky, osc_expandshrinkx, osc_expandshrinky]
+    optionslayout = [lao_placex, lao_aligny]
+    align_glue = wam_center
+    place_mindist = 5
+    linktop = cont2
+    dist_top = 5
+    options = [spao_gluebottom]
+    object switchlayout: tlayouter
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 142
+      bounds_cy = 30
+      optionsscale = [osc_expandx, osc_shrinkx, osc_expandy, osc_shrinky]
+      optionslayout = [lao_placex, lao_aligny]
+      align_glue = wam_center
+      place_mindist = 5
+      object splitopa: tbooleanedit
+        frame.caption = 'Separate'#10'Opacity'
+        frame.localprops = []
+        frame.localprops1 = []
+        frame.outerframe = (
+          0
+          8
+          61
+          9
+        )
+        bounds_x = 68
+        bounds_y = 0
+        bounds_cx = 74
+        bounds_cy = 30
+        onsetvalue = sepopaset
+      end
+      object reverse: tbooleanedit
+        frame.caption = '&reverse'
+        frame.localprops = []
+        frame.localprops1 = []
+        frame.outerframe = (
+          0
+          1
+          50
+          2
+        )
+        taborder = 1
+        bounds_x = 0
+        bounds_y = 7
+        bounds_cx = 63
+        bounds_cy = 16
+        ondataentered = reverseenteredev
+      end
+    end
+    object buttonlayout: tlayouter
+      taborder = 1
+      bounds_x = 176
+      bounds_y = 0
+      bounds_cx = 328
+      bounds_cy = 31
+      optionsscale = [osc_expandx, osc_shrinkx, osc_expandy, osc_shrinky]
+      optionslayout = [lao_placex]
+      place_mindist = 5
+      object tbutton2: tbutton
+        optionswidget1 = [ow1_autoscale, ow1_autowidth]
+        bounds_x = 270
+        bounds_y = 0
+        bounds_cx = 58
+        bounds_cy = 31
+        bounds_cxmin = 58
+        state = [as_localcaption]
+        caption = '&Cancel'
+        modalresult = mr_canclose
+      end
+      object tbutton1: tbutton
+        optionswidget1 = [ow1_autoscale, ow1_autowidth]
+        taborder = 1
+        bounds_x = 207
+        bounds_y = 0
+        bounds_cx = 58
+        bounds_cy = 31
+        bounds_cxmin = 58
+        state = [as_default, as_localdefault, as_localcaption]
+        caption = '&OK'
+        modalresult = mr_ok
+      end
+      object tsimplewidget1: tsimplewidget
+        taborder = 2
+        bounds_x = 198
+        bounds_y = 8
+        bounds_cx = 4
+        bounds_cy = 18
+      end
+      object tbutton3: tbutton
+        optionswidget1 = [ow1_autoscale, ow1_autowidth]
+        taborder = 3
+        bounds_x = 135
+        bounds_y = 0
+        bounds_cx = 58
+        bounds_cy = 31
+        bounds_cxmin = 58
+        state = [as_localcaption, as_localonexecute]
+        caption = '&Save'
+        onexecute = saveex
+      end
+      object tbutton4: tbutton
+        optionswidget1 = [ow1_autoscale, ow1_autowidth]
+        taborder = 4
+        bounds_x = 72
+        bounds_y = 0
+        bounds_cx = 58
+        bounds_cy = 31
+        bounds_cxmin = 58
+        state = [as_localcaption, as_localonexecute]
+        caption = '&Load'
+        onexecute = loadex
+      end
+      object clearbu: tbutton
+        optionswidget1 = [ow1_autoscale, ow1_autowidth]
+        taborder = 5
+        hint = 'Clear opacity gradient'
+        bounds_x = 0
+        bounds_y = 0
+        bounds_cx = 67
+        bounds_cy = 31
+        bounds_cxmin = 58
+        state = [as_disabled, as_localdisabled, as_localcaption, as_localhint, as_localonexecute]
+        caption = 'ClearOpa'
+        onexecute = clearopaexe
+      end
+    end
+  end
+  object formstatfile: tstatfile
+    filename = 'fadeeditor.sta'
+    options = [sfo_memory, sfo_activatorread, sfo_activatorwrite]
+    left = 96
+    top = 200
+  end
+  object filedialog: tfiledialog
+    statfile = formstatfile
+    controller.filterlist.data = (
+      (
+        'Fade Files'
+        '*.fad'
+      )
+      (
+        'All Files'
+        '*'
+      )
+    )
+    controller.defaultext = 'fad'
+    controller.options = [fdo_checkexist, fdo_savelastdir]
+    controller.captionopen = 'Load Fade File'
+    controller.captionsave = 'Save Fade File'
+    left = 208
+    top = 240
+  end
+  object fadestatfile: tstatfile
+    filename = 'status.sta'
+    onstatupdate = fadestatupdateexe
+    left = 200
+    top = 200
+  end
+  object c: tstringcontainer
+    strings.data = (
+      'Do you want to synchronize opacity gradient'
+      'with color gradient?'
+      'Do you want to remove opacity gradient?'
+    )
+    left = 88
+    top = 344
+  end
+end

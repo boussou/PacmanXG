@@ -1,0 +1,120 @@
+object mseificlienteditorfo: tmseificlienteditorfo
+  visible = False
+  bounds_x = 137
+  bounds_y = 263
+  bounds_cx = 284
+  bounds_cy = 253
+  container.bounds = (
+    0
+    0
+    284
+    253
+  )
+  options = [fo_closeonesc, fo_autoreadstat, fo_autowritestat, fo_savepos, fo_savezorder, fo_savestate]
+  statfile = tstatfile1
+  caption = 'ifi Client Editor'
+  moduleclassname = 'tmseform'
+  object grid: twidgetgrid
+    bounds_x = 0
+    bounds_y = 0
+    bounds_cx = 284
+    bounds_cy = 210
+    anchors = [an_top, an_bottom]
+    optionsgrid = [og_rowinserting, og_rowdeleting, og_focuscellonenter, og_autofirstrow, og_autoappend, og_colchangeontabkey, og_wrapcol, og_autopopup, og_mousescrollcol]
+    fixcols.count = 1
+    fixcols.items = <    
+      item
+        width = 24
+        numstep = 1
+      end>
+    datacols.count = 2
+    datacols.options = [co_savestate, co_mousescrollrow]
+    datacols.items = <    
+      item[po]
+        options = [co_invisible, co_drawfocus, co_savestate, co_mousescrollrow]
+        widgetname = 'po'
+        dataclass = tgridpointerdatalist
+      end    
+      item[na]
+        width = 203
+        options = [co_fill, co_savestate, co_mousescrollrow]
+        oncellevent = celle
+        widgetname = 'na'
+        dataclass = titemeditlist
+      end>
+    datarowheight = 16
+    statfile = tstatfile1
+    reffontheight = 14
+    object po: tpointeredit
+      optionsskin = [osk_framebuttononly]
+      taborder = 1
+      bounds_x = 0
+      bounds_y = 0
+      bounds_cx = 50
+      bounds_cy = 16
+      optionsedit1 = [oe1_autopopupmenu, oe1_keyexecute, oe1_savestate, oe1_checkvalueafterstatread]
+      visible = False
+    end
+    object na: tmbdropdownitemedit
+      optionsskin = [osk_framebuttononly]
+      frame.levelo = 0
+      frame.colorclient = -2147483645
+      frame.localprops = [frl_levelo, frl_leveli, frl_colorclient]
+      frame.button.color = -1879048187
+      frame.buttons.count = 2
+      frame.buttons.items = <      
+        item
+          color = -1879048187
+        end      
+        item
+          imagenr = 17
+          onexecute = editexe
+        end>
+      taborder = 2
+      visible = False
+      bounds_x = 51
+      bounds_y = 0
+      bounds_cx = 203
+      bounds_cy = 16
+      optionsedit1 = []
+      onkeydown = keydownexe
+      onsetvalue = setval
+      dropdown.options = [deo_selectonly, deo_autodropdown, deo_keydropdown]
+      dropdown.cols.count = 1
+      dropdown.cols.items = <      
+        item
+        end>
+      onbeforedropdown = befdrop
+      reffontheight = 14
+    end
+  end
+  object tbutton1: tbutton
+    taborder = 1
+    bounds_x = 168
+    bounds_y = 224
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_right, an_bottom]
+    state = [as_localdefault, as_localcaption]
+    caption = '&OK'
+    modalresult = mr_ok
+  end
+  object tbutton2: tbutton
+    taborder = 2
+    bounds_x = 224
+    bounds_y = 224
+    bounds_cx = 50
+    bounds_cy = 20
+    anchors = [an_right, an_bottom]
+    state = [as_localdefault, as_localcaption]
+    caption = '&Cancel'
+    modalresult = mr_cancel
+  end
+  object tstatfile1: tstatfile
+    filename = 'ificlienteditor.sta'
+    options = [sfo_memory]
+    onstatupdate = statexe
+    left = 40
+    top = 88
+  end
+end
