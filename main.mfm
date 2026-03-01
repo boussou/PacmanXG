@@ -4409,7 +4409,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'News'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           captiondist = 0
           imagelist = timagelist1
           imagenr = 31
@@ -4433,7 +4433,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'Package Management'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           captiondist = 0
           imagelist = timagelist1
           imagenr = 27
@@ -4456,7 +4456,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'Tasks'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           captiondist = 0
           imagelist = timagelist1
           imagenr = 19
@@ -4523,7 +4523,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'Logs'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           captiondist = 0
           imagelist = timagelist1
           imagenr = 18
@@ -4547,7 +4547,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'Settings'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           imagelist = timagelist1
           imagenr = 7
           onexecute = on_navigate_menu
@@ -4569,7 +4569,7 @@ object mainfo: tmainfo
           faceclicked.dummy = 0
           caption = 'Pacman key management'
           textflags = [tf_ycentered, tf_wordbreak]
-          imagepos = ip_leftcenter
+          imagepos = ip_left
           captiondist = 0
           imagelist = timagelist1
           imagenr = 39

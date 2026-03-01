@@ -14,7 +14,7 @@ unit msefiledialog;
 interface
 
 uses
- mseglob,mseguiglob,msegui,mseforms,Classes,mseclasses,msewidgets,msegrids,
+ mseglob,mseguiglob,msegui,mseforms,mseclasses,msewidgets,msegrids,
  mselistbrowser,mseedit,msesimplewidgets,msedataedits,msedialog,msetypes,
  msestrings,msesystypes,msesys,msedispwidgets,msedatalist,msestat,msestatfile,
  msebitmap,msedatanodes,msefileutils,msedropdownlist,mseevent,msegraphedits,
@@ -75,7 +75,7 @@ type
 //   procedure setoptions(const Value: listviewoptionsty); override;
    procedure docellevent(var info: celleventinfoty); override;
   public
-   constructor create(aowner: tcomponent); override;
+   constructor create(aowner: tmsecomponent);
    destructor destroy; override;
    procedure readlist;
    procedure updir;
@@ -231,8 +231,7 @@ type
  end;
 
 const
- defaultfiledialogoptionsedit = defaultoptionsedit+
-                                  [oe_savevalue,oe_savestate,oe_saveoptions];
+ defaultfiledialogoptionsedit = [oe1_savevalue,oe1_savestate,oe1_saveoptions];
  
 type 
  tfiledialog = class(tdialog,istatfile)
@@ -240,8 +239,9 @@ type
    fcontroller: tfiledialogcontroller;
    fstatvarname: msestring;
    fstatfile: tstatfile;
+   fstatpriority: integer;
    fdialogkind: filedialogkindty;
-   foptionsedit: optionseditty;
+   foptionsedit: optionsedit1ty;
    procedure setcontroller(const value: tfiledialogcontroller);
    procedure setstatfile(const Value: tstatfile);
   protected
@@ -251,8 +251,9 @@ type
    procedure statreading;
    procedure statread;
    function getstatvarname: msestring;
+   function getstatpriority: integer;
   public
-   constructor create(aowner: tcomponent); override;
+   constructor create(aowner: tmsecomponent);
    destructor destroy; override;
    function execute: modalresultty; overload; override;
    function execute(const akind: filedialogkindty): modalresultty;
@@ -267,7 +268,7 @@ type
    property controller: tfiledialogcontroller read fcontroller write setcontroller;
    property dialogkind: filedialogkindty read fdialogkind write fdialogkind
                                                            default fdk_none;
-   property optionsedit: optionseditty read foptionsedit write foptionsedit
+   property optionsedit: optionsedit1ty read foptionsedit write foptionsedit
                                   default defaultfiledialogoptionsedit;
  end;
 
@@ -302,7 +303,7 @@ type
    procedure updatecopytoclipboard(var atext: msestring); override;
    procedure updatepastefromclipboard(var atext: msestring); override;
   public
-   constructor create(aowner: tcomponent); override;
+   constructor create(aowner: tmsecomponent);
    destructor destroy; override;
    procedure componentevent(const event: tcomponentevent); override;
    property controller: tfiledialogcontroller read fcontroller write setcontroller;
@@ -463,7 +464,7 @@ implementation
 uses
  msefiledialog_mfm,sysutils,msebits,
  msestringenter,msedirtree,msefiledialogres,msekeyboard,
- msestockobjects,msesysintf,msearrayutils;
+ msestockobjects,msesysintf,msearrayutils,Classes;
 
 procedure getfileicon(const info: fileinfoty; var imagelist: timagelist;
                       out imagenr: integer);
@@ -718,7 +719,7 @@ end;
 
 { tfilelistview }
 
-constructor tfilelistview.create(aowner: tcomponent);
+constructor tfilelistview.create(aowner: tmsecomponent);
 begin
  fcaseinsensitive:= filesystemiscaseinsensitive;
  fincludeattrib:= [fa_all];
@@ -727,7 +728,7 @@ begin
  foptionsfile:= defaultfilelistviewoptions;
  ffilelist:= tfiledatalist.create;
  ffilelist.onchange:= {$ifdef FPC}@{$endif}filelistchanged;
- inherited;
+ inherited create(aowner);
  options:= defaultlistviewoptionsfile;
  checkcasesensitive;
 end;
@@ -2093,11 +2094,11 @@ end;
 
 { tfiledialog }
 
-constructor tfiledialog.create(aowner: tcomponent);
+constructor tfiledialog.create(aowner: tmsecomponent);
 begin
  foptionsedit:= defaultfiledialogoptionsedit;
  fcontroller:= tfiledialogcontroller.create(nil);
- inherited;
+ inherited create(aowner);
 end;
 
 destructor tfiledialog.destroy;
@@ -2158,6 +2159,11 @@ begin
  result:= fstatvarname;
 end;
 
+function tfiledialog.getstatpriority: integer;
+begin
+ result:= fstatpriority;
+end;
+
 procedure tfiledialog.setstatfile(const Value: tstatfile);
 begin
  setstatfilevar(istatfile(self),value,fstatfile);
@@ -2195,10 +2201,10 @@ end;
 
 { tcustomfilenameedit }
 
-constructor tcustomfilenameedit.create(aowner: tcomponent);
+constructor tcustomfilenameedit.create(aowner: tmsecomponent);
 begin
  fcontroller:= tfiledialogcontroller.create(self,{$ifdef FPC}@{$endif}formatchanged);
- inherited;
+ inherited create(aowner);
 end;
 
 destructor tcustomfilenameedit.destroy;

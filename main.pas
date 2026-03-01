@@ -2451,8 +2451,7 @@ var cmd : string;
 begin
   cmd := (findcomponent('d' + (sender as trichbutton).name) as tdropdownlistedit).value;
   cmd := check_util_cmdline(cmd);
-  shell(cmd + ' &');
-  //Exec(cmd, false);
+  Exec(cmd + ' &', false);
 end;
 
 
